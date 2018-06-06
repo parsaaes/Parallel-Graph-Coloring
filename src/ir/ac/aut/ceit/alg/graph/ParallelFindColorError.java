@@ -17,9 +17,9 @@ public class ParallelFindColorError extends ParallelGraph implements Runnable {
                 int neighVertex = neigh.getData();
                 int neighColor = graph.getColors()[neighVertex];
                 int vertexColor = graph.getColors()[i];
-                if((neighColor == vertexColor) && !errorVertices.contains(neighVertex)){
+                if((neighColor == vertexColor)){
                     //System.out.println("added " + i + " for " + neighVertex);
-                    errorVertices.add(i);
+                    errorVertices.add(Math.min(neighVertex,i));
                     break;
                 }
                 neigh = neigh.getNext();
