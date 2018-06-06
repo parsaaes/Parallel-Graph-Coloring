@@ -86,7 +86,7 @@ public class Coloring {
             if(end > graph.getVertexNumber()){
                 end = graph.getVertexNumber();
             }
-            // System.out.println(i + " to " + end);
+            System.out.println(i + " to " + end);
             ParallelFindColorError errorThread = new ParallelFindColorError(graph,i,end);
             errorClassArray.add(errorThread);
             threadArray.add(new Thread(errorThread));

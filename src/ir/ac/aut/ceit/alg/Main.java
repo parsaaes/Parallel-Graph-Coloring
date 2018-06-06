@@ -7,6 +7,6 @@ public class Main {
 
     public static void main(String[] args) {
         Coloring coloring = new Coloring();
-        coloring.doColoring("test.txt");
+        coloring.doColoring(System.getProperty("user.dir") + "/test.txt");
     }
 }
