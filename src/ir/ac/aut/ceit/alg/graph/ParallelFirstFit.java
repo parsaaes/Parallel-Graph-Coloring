@@ -22,15 +22,16 @@ public class ParallelFirstFit extends ParallelGraph implements Runnable {
 
 
     private ArrayList<Integer> buildImpossibleList(ListNode firstNeigh) {
-        ArrayList<Integer> unPossibleList = new ArrayList<>();
+        ArrayList<Integer> imPossibleList = new ArrayList<>();
         ListNode neigh = firstNeigh;
+        int[] colorArr = graph.getColors();
         while (neigh != null){
             if(graph.getColors()[neigh.getData()] != -1){
-                unPossibleList.add(graph.getColors()[neigh.getData()]);
+                imPossibleList.add(colorArr[neigh.getData()]);
             }
             neigh = neigh.getNext();
         }
-        return unPossibleList;
+        return imPossibleList;
     }
 
 }
