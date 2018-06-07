@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Coloring {
-    private int threadCount = 2;
+    private int threadCount = 150;
     private ArrayList<Thread> threadArray = new ArrayList<>();
 
     public void doColoring(String path){
         Graph graph = new Graph(path);
+        System.out.println("is colored? " + ColoringValidator.validate(graph));
         //graph.printAdjList();
         int eachThreadVertex = graph.getVertexNumber() / threadCount;
 
@@ -37,6 +38,8 @@ public class Coloring {
         graph.printColoring();
 
         saveColoring(graph, path.substring(0,path.lastIndexOf(".")) + "-colored.txt");
+        System.out.println("is colored? " + ColoringValidator.validate(graph));
+
         // improve color naming [optional]
 //        int[] colors = graph.getColors();
 //        int lastColor = colors[0];
