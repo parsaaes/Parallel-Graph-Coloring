@@ -9,6 +9,9 @@ public class ParallelFindColorError extends ParallelGraph implements Runnable {
         super(graph, startVertex, endVertex);
     }
 
+    /**
+     * find coloring errors
+     */
     @Override
     public void run() {
         for(int i = startVertex; i < endVertex; i++){

@@ -1,6 +1,11 @@
 package ir.ac.aut.ceit.alg.graph;
 
 public class ColoringValidator {
+    /**
+     * check if coloring is correct
+     * @param graph given graph
+     * @return true if coloring is correct
+     */
     public static boolean validate(Graph graph){
         int vertexNum = graph.getVertexNumber();
         int[] colorArr = graph.getColors();

@@ -9,6 +9,10 @@ public class Coloring {
     private int threadCount = 2;
     private ArrayList<Thread> threadArray = new ArrayList<>();
 
+    /**
+     * do a coloring
+     * @param path graph path
+     */
     public void doColoring(String path){
         Graph graph = new Graph(path);
         //System.out.println("is colored? " + ColoringValidator.validate(graph));
@@ -56,20 +60,32 @@ public class Coloring {
 //        graph.printColoring();
     }
 
+    /**
+     * make a list of impossible colors
+     * @param graph
+     * @param firstNeigh
+     * @return
+     */
     private ArrayList<Integer> buildImpossibleList(Graph graph, ListNode firstNeigh) {
-        ArrayList<Integer> unPossibleList = new ArrayList<>();
+        ArrayList<Integer> imPossibleList = new ArrayList<>();
         ListNode neigh = firstNeigh;
         while (neigh != null){
-            unPossibleList.add(graph.getColors()[neigh.getData()]);
+            imPossibleList.add(graph.getColors()[neigh.getData()]);
             neigh = neigh.getNext();
         }
-        return unPossibleList;
+        return imPossibleList;
     }
 
-    protected int getLowestAvailableColor(Graph graph, ArrayList<Integer> unPossibleList) {
+    /**
+     * get the color with least index
+     * @param graph given graph
+     * @param imPossibleList impossible list
+     * @return least available color
+     */
+    protected int getLowestAvailableColor(Graph graph, ArrayList<Integer> imPossibleList) {
         int color = -2;
         for (int j = 0; j < graph.getVertexNumber(); j++) {
-            if(!unPossibleList.contains(j)){
+            if(!imPossibleList.contains(j)){
                 color = j;
                 break;
             }
@@ -77,6 +93,12 @@ public class Coloring {
         return color;
     }
 
+    /**
+     * find coloring errors in parallel
+     * @param graph given graph
+     * @param eachThreadVertex number of vertices for each thread to search in
+     * @return errors list
+     */
     private HashSet<Integer> findErrorsInParallel(Graph graph, int eachThreadVertex) {
         threadArray = new ArrayList<>();
         ArrayList<ParallelFindColorError> errorClassArray = new ArrayList<>();
@@ -111,6 +133,11 @@ public class Coloring {
         return allVerticesErrors;
     }
 
+    /**
+     * do Parallel FF
+     * @param graph given graph
+     * @param eachThreadVertex number of vertices for each thread to search in
+     */
     private void doFFInParallel(Graph graph, int eachThreadVertex) {
         threadArray = new ArrayList<>();
         int i = 0;
@@ -136,6 +163,12 @@ public class Coloring {
         }
 
     }
+
+    /**
+     * save coloring to file
+     * @param graph given colored graph
+     * @param path file address
+     */
     public void saveColoring(Graph graph, String path){
         String result = "";
         int[] colorArr = graph.getColors();

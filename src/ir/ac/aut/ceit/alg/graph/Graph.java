@@ -16,6 +16,10 @@ public class Graph {
         System.out.println("Graph created. Max Edge: " + vertexNumber);
     }
 
+    /**
+     * create a adj list from a graph
+     * @param path graph address
+     */
     private void createAdjList(String path) {
         ArrayList<int[]> csv = FileUtils.readCSV(path);
         int maxEdge = 0;
@@ -45,11 +49,20 @@ public class Graph {
     }
 
     // a -> b
+
+    /**
+     * insert edge a -> b
+     * @param a first vertex
+     * @param b second vertex
+     */
     public void insertEdge(int a, int b){
         adjList[a] = new ListNode(b, adjList[a]);
     }
 
 
+    /**
+     * print adj list
+     */
     public void printAdjList(){
         for (int i = 0; i < adjList.length; i++) {
             ListNode listNode = adjList[i];
@@ -64,6 +77,9 @@ public class Graph {
         }
     }
 
+    /**
+     * run a DFS
+     */
     public void runDFS(){
         isVisited = new boolean[vertexNumber];
         runDFS(0);
@@ -96,6 +112,9 @@ public class Graph {
         colors[vertex] = color;
     }
 
+    /**
+     * print colors of vertices
+     */
     public void printColoring(){
         for (int i = 0; i < colors.length; i++) {
             System.out.println(i + "=>" + colors[i]);

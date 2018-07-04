@@ -14,10 +14,15 @@ public abstract class ParallelGraph {
         this.endVertex = endVertex;
     }
 
-    protected int getLowestAvailableColor(ArrayList<Integer> unPossibleList) {
+    /**
+     * get the color with least index number
+     * @param imPossibleList impossible list of colors
+     * @return
+     */
+    protected int getLowestAvailableColor(ArrayList<Integer> imPossibleList) {
         int color = -2;
         for (int j = 0; j < graph.getVertexNumber(); j++) {
-            if(!unPossibleList.contains(j)){
+            if(!imPossibleList.contains(j)){
                 color = j;
                 break;
             }

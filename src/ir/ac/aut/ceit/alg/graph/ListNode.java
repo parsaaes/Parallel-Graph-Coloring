@@ -22,6 +22,9 @@ public class ListNode {
         return data;
     }
 
+    /**
+     * print neighbours
+     */
     public void printFromHere(){
         ListNode tmp = this;
         System.out.print("[");
@@ -32,6 +35,11 @@ public class ListNode {
         System.out.print("]");
     }
 
+    /**
+     * check if the given vertex is a neighbour
+     * @param vertex given vertex
+     * @return true if the given vertex is a neighbour
+     */
     public boolean containsInForward(int vertex){
         boolean result = false;
         ListNode tmp = this;
@@ -45,6 +53,10 @@ public class ListNode {
         return result;
     }
 
+    /**
+     * get the degree
+     * @return degree
+     */
     public int getDegree(){
         int result = 0;
         ListNode tmp = this;
@@ -56,6 +68,11 @@ public class ListNode {
     }
 
     //if working on undirected graph you need to use this twice
+
+    /**
+     * remove a vertex
+     * @param toBeReomved vertex to be removed
+     */
     public void removeEdgeInForward(int toBeReomved){
         if(containsInForward(toBeReomved) == false){
             return;

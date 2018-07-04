@@ -10,6 +10,9 @@ public class ParallelFirstFit extends ParallelGraph implements Runnable {
         super(graph,startVertex,endVertex);
     }
 
+    /**
+     * run FF
+     */
     @Override
     public void run() {
         for (int i = startVertex; i < endVertex ; i++) {
@@ -21,6 +24,11 @@ public class ParallelFirstFit extends ParallelGraph implements Runnable {
     }
 
 
+    /**
+     * build a impossible list of colors
+     * @param firstNeigh a neighbour of a vertex
+     * @return
+     */
     private ArrayList<Integer> buildImpossibleList(ListNode firstNeigh) {
         ArrayList<Integer> imPossibleList = new ArrayList<>();
         ListNode neigh = firstNeigh;
